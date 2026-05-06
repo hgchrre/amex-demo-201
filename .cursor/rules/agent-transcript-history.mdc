@@ -1,0 +1,16 @@
+---
+description: Use prior agent transcripts when answering history or previous-agent questions
+alwaysApply: true
+---
+
+# Agent Transcript History
+
+When the user asks about previous chats, prior agents, agent history, or work done by earlier agents:
+
+- Treat agent transcripts as a first-class source. Search/read the workspace transcript store before relying on git history alone.
+- Prefer parent chat transcripts for user-visible summaries. Use subagent transcripts only when the user asks for subagent detail or the parent transcript points to them.
+- Do not claim that no agent session log exists until you have checked the transcript store.
+- Distinguish sources clearly: git commits show repository changes; transcripts show agent/user activity and intent.
+- If citing chats to the user, cite only parent transcript IDs, never subagent transcript IDs.
+- If using transcript file timestamps for counts or charts, label them as filesystem mtimes, not conversation timestamps.
+

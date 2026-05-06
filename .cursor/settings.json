@@ -1,0 +1,10 @@
+{
+  "plugins": {
+    "cursor-trial-plugins/testing-reliability": {
+      "enabled": true
+    },
+    "cursor-trial-plugins/git-workflows": {
+      "enabled": true
+    }
+  }
+}

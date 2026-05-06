@@ -1,0 +1,5 @@
+---
+alwaysApply: true
+---
+
+- never use Jest for unit testing, rather use Vitest

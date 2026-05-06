@@ -24,8 +24,8 @@
 .DS_Store
 *.pem
 
-# IDE / local logs (vendor-neutral handoff)
-.cursor/
+# IDE — track `.cursor/` rules/skills; ignore local Cursor logs only
+.cursor/logs/
 logs/
 *.log
 
