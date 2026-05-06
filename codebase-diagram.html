@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Architecture — Amex Card Business Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+  <script type="module" src="https://esm.sh/mermaid@11"></script>
+  <style>
+    :root {
+      --bg: #14120b;
+      --fg: #edecec;
+      --accent: #f54e00;
+      --card: #1b1913;
+      --card-02: #201e18;
+      --card-04: #2b2923;
+      --muted: rgba(237, 236, 236, 0.6);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--fg);
+      font-family: 'Outfit', sans-serif;
+      padding: 2rem;
+    }
+    h1 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      margin: 0 0 0.5rem 0;
+      color: var(--accent);
+    }
+    .subtitle { color: var(--muted); margin-bottom: 2rem; max-width: 720px; }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--card-04);
+      border-radius: 8px;
+      padding: 1.25rem;
+      overflow: hidden;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .card h2 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin: 0 0 0.75rem 0;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--accent);
+    }
+    .mermaid {
+      background: var(--card-02) !important;
+      border-radius: 6px;
+      padding: 1rem;
+      margin: 0;
+    }
+    .mermaid svg { max-width: 100%; }
+    .legend {
+      display: flex;
+      gap: 1.5rem;
+      margin-top: 1rem;
+      flex-wrap: wrap;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+    .legend span { display: flex; align-items: center; gap: 0.35rem; }
+    .legend .dot { width: 8px; height: 8px; border-radius: 50%; }
+    .dot--strength { background: #22c55e; }
+    .dot--weakness { background: #ef4444; }
+  </style>
+</head>
+<body>
+  <h1>Amex card business dashboard</h1>
+  <p class="subtitle">Next.js App Router demo: pages call <code>app/api/card-business/*</code> routes; data comes from in-memory mocks only.</p>
+
+  <div class="card">
+    <h2>Request flow</h2>
+    <div class="mermaid">
+flowchart LR
+  subgraph Pages["app/ pages"]
+    dash["page.tsx — overview"]
+    cp["card-products"]
+    seg["segments"]
+    txn["transactions"]
+    net["network"]
+    rev["revenue"]
+  end
+
+  subgraph API["Route handlers"]
+    o["/api/card-business/overview"]
+    c["/api/card-business/card-products"]
+    s["/api/card-business/segments"]
+    t["/api/card-business/transactions"]
+    n["/api/card-business/network"]
+    r["/api/card-business/revenue"]
+  end
+
+  subgraph Data["Data layer"]
+    mock["lib/card-business/mock-data.ts"]
+  end
+
+  dash --> o
+  cp --> c
+  seg --> s
+  txn --> t
+  net --> n
+  rev --> r
+  o --> mock
+  c --> mock
+  s --> mock
+  t --> mock
+  n --> mock
+  r --> mock
+    </div>
+    <div class="legend">
+      <span><span class="dot dot--strength"></span> Typed mocks, clear app/api split</span>
+      <span><span class="dot dot--weakness"></span> No auth or persistence (demo only)</span>
+    </div>
+  </div>
+
+  <script type="module">
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: 'dark',
+      themeVariables: {
+        primaryColor: '#1b1913',
+        primaryTextColor: '#edecec',
+        primaryBorderColor: '#2b2923',
+        lineColor: '#f54e00',
+        secondaryColor: '#201e18',
+        tertiaryColor: '#14120b'
+      },
+      flowchart: { curve: 'basis', useMaxWidth: true }
+    });
+  </script>
+</body>
+</html>

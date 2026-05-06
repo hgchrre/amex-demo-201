@@ -1,0 +1,40 @@
+{
+  "name": "amex-card-leadership-dashboard",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "portless",
+    "dev:app": "next dev --turbopack",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "portless": {
+    "name": "amex-dashboard",
+    "script": "dev:app"
+  },
+  "dependencies": {
+    "lucide-react": "^0.577.0",
+    "next": "16.2.4",
+    "ol": "^10.9.0",
+    "react": "19.2.4",
+    "react-dom": "19.2.4"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3.3.5",
+    "@tailwindcss/postcss": "^4.2.4",
+    "@types/node": "^25.3.3",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "eslint": "^10.3.0",
+    "eslint-config-next": "16.2.4",
+    "tailwindcss": "^4.2.4",
+    "typescript": "^5.9.3"
+  },
+  "pnpm": {
+    "overrides": {
+      "brace-expansion": "1.1.13",
+      "postcss": "8.5.14"
+    }
+  }
+}
